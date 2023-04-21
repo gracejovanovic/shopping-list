@@ -8,7 +8,7 @@ let isEditMode = false;
 
 function displayItems() {
     const itemsFromStorage = getItemsFromStorage();
-    itemsFromStorage.forEach(item => addItemToDom(item));
+    itemsFromStorage.forEach(item) => addItemToDom(item);
     checkUI();
 }
 
@@ -73,18 +73,19 @@ function createIcon(classes) {
 
 // Adding all list items to Computer's Local Storage
 
-function getItemsFromStorage(item) {
+function getItemsFromStorage() {
     let itemsFromStorage;
     if(localStorage.getItem('items') === null) {
         itemsFromStorage = [];
     } else {
         itemsFromStorage = JSON.parse(localStorage.getItem('items'));
     }
+    return itemsFromStorage;
 } 
 function addItemToStorage(item) {
     const itemsFromStorage = getItemsFromStorage();
     itemsFromStorage.push(item); // push the new string of items into the array
-    localStorage.setItem('items', JSON.stringify(itemsFromStorage)) //Convert to JSON String and set to Local Storage
+    localStorage.setItem('items', JSON.stringify(itemsFromStorage)); //Convert to JSON String and set to Local Storage
 }
 
 function onClickItem(e) {
@@ -97,8 +98,7 @@ function onClickItem(e) {
 
 function checkIfItemExists(item) {
     const itemsFromStorage = getItemsFromStorage();
-    if (itemsFromStorage.includes(item)) {
-       return itemsFromStorage.includes(item);
+    return itemsFromStorage.includes(item);
 }
 
 function setItemToEdit(item) {
@@ -113,7 +113,7 @@ function setItemToEdit(item) {
     itemInput.value = item.textContent;
 }
 
-function removeItem (item) {
+function removeItem(item) {
     if (confirm('Are you sure?')) {
         //remove item from DOM
         item.remove();
@@ -123,7 +123,7 @@ function removeItem (item) {
     }
 }
 
-function removeItemFromStorage (item) {
+function removeItemFromStorage(item) {
     let itemsFromStorage = getItemsFromStorage();
 
     //Filter out item to be removed
@@ -134,7 +134,7 @@ function removeItemFromStorage (item) {
 }
 
 function clearItems() {
-    while(itemList.firstChild) {
+    while (itemList.firstChild) {
         itemList.removeChild(itemList.firstChild);
     }
     // Clear from local storage
@@ -174,7 +174,7 @@ function checkUI() {
 }
 
 // Initialize App
-function init () {
+function init() {
 
     //Event Listeners
     itemForm.addEventListener('submit', onAddItemSubmit);
