@@ -8,7 +8,7 @@ let isEditMode = false;
 
 function displayItems() {
     const itemsFromStorage = getItemsFromStorage();
-    itemsFromStorage.forEach(item) => addItemToDom(item);
+    itemsFromStorage.forEach((item) => addItemToDom(item));
     checkUI();
 }
 
